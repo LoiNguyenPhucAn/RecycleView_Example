@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">RecycleView</string>
+    <string-array name="programming_language">
+        <item>C</item>
+        <item>C++</item>
+        <item>C#</item>
+        <item>Java</item>
+        <item>Javascript</item>
+        <item>HTML5</item>
+        <item>Kotlin</item>
+        <item>Fultter</item>
+        <item>Python</item>
+        <item>ReactNative</item>
+        <item>PHP</item>
+        <item>SQL</item>
+    </string-array>
+</resources>
