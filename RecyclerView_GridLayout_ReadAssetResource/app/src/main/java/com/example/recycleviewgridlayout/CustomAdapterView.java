@@ -24,9 +24,10 @@ public class CustomAdapterView extends RecyclerView.Adapter<CustomAdapterView.Cu
 
     IconRecyclerviewBinding iconRecyclerviewBinding;
     Context mContext;
-    ArrayList<String> recyclerViewPageList;
 
-    public CustomAdapterView(Context mContext, ArrayList<String> recyclerViewPageList) {
+    String[] recyclerViewPageList;
+
+    public CustomAdapterView(Context mContext, String[] recyclerViewPageList) {
         this.mContext = mContext;
         this.recyclerViewPageList = recyclerViewPageList;
     }
@@ -44,11 +45,10 @@ public class CustomAdapterView extends RecyclerView.Adapter<CustomAdapterView.Cu
     public void onBindViewHolder(@NonNull CustomViewHolder holder, int position) {
 
         AssetManager assetManager = mContext.getAssets();
-        String srcName = recyclerViewPageList.get(position).substring(3);
-
         try{
-            InputStream ims = assetManager.open(recyclerViewPageList.get(position));
-            Drawable d = Drawable.createFromStream(ims, srcName);
+
+            InputStream ims = assetManager.open(recyclerViewPageList[position]);
+            Drawable d = Drawable.createFromStream(ims, null);
             iconRecyclerviewBinding.ivIcon.setImageDrawable(d);
 
         }catch (Exception ex){
@@ -60,7 +60,8 @@ public class CustomAdapterView extends RecyclerView.Adapter<CustomAdapterView.Cu
 
     @Override
     public int getItemCount() {
-        return recyclerViewPageList.size();
+
+        return recyclerViewPageList.length;
     }
 
     public class CustomViewHolder extends RecyclerView.ViewHolder{

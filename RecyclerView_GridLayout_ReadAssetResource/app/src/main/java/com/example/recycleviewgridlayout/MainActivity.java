@@ -17,7 +17,7 @@ import java.util.ListIterator;
 
 public class MainActivity extends AppCompatActivity {
 
-    String[] listItemSea, listItemMammal, listItemBird;
+    String[] icon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,23 +25,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         try{
-            // đọc các tên file trong thư mục asset/... và chuyển giá trị vào array
-            listItemSea = getApplicationContext().getAssets().list("sea");
-            listItemMammal = getApplicationContext().getAssets().list("mammal");
-            listItemBird = getApplicationContext().getAssets().list("bird");
 
-            // Chuyển giá trị trong array vào arraylist
-            ArrayList<String> recyclerViewPageList = new ArrayList<>();
-            recyclerViewPageList.addAll(Arrays.asList(listItemSea));
-            recyclerViewPageList.addAll(Arrays.asList(listItemMammal));
-            recyclerViewPageList.addAll(Arrays.asList(listItemBird));
-
+            icon = getApplicationContext().getAssets().list("");
             // set a GridLayoutManager with default vertical orientation and 3 number of columns
             GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(),3,RecyclerView.VERTICAL,true);
             RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycle_view_grid);
 
             //  call the constructor of CustomAdapter to send the reference and data to Adapter
-            CustomAdapterView adapterView = new CustomAdapterView (this,recyclerViewPageList);
+            CustomAdapterView adapterView = new CustomAdapterView (this,icon);
+
             // set the Adapter to RecyclerView
             recyclerView.setAdapter(adapterView);
             recyclerView.setLayoutManager(gridLayoutManager);
